@@ -33,13 +33,42 @@ userSchema.set('toJSON', {
    },
  });
 
+ //trainSchema
+ const trainSchema = new mongoose.Schema({
+  train_id: { type: Number, required: true },
+  train_name: { type: String, required: true },
+  capacity: { type: Number, required: true },
+  stops: [
+     {
+        station_id: { type: Number, required: true },
+        arrival_time: { type: String, default: null }, 
+        departure_time: { type: String, default: null }, 
+        fare: { type: Number, required: true }
+     }
+  ]
+});
+
+
+trainSchema.set('toJSON', {
+  transform: (doc, ret) => {
+   //  ret.id = ret._id;
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+});
+
+
  
 
  
 
 const Book = mongoose.model("Book", bookSchema);
 const User = mongoose.model("User", userSchema);
+const Train = mongoose.model('Train', trainSchema);
 
-
-module.exports = {Book, User};
+module.exports = {Book, 
+                  User,
+                  Train
+                };
 

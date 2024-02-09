@@ -37,15 +37,13 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/api/books
+POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
-    "id": 2,
-    "title": "Go Set a Watchman",
-    "author": "Harper Lee",
-    "genre": "Drama",
-    "price": 24.99
+    "user_id": 1,
+    "user_name": "Fahim",
+    "balance": 100.1
 }
 
 ###
