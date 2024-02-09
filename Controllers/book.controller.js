@@ -20,16 +20,15 @@ async function createTrain(req, res){
   try {
     const newTrain = await Train.create(req.body);
 
-    // const resTrain = {
-    //   "train_id": newTrain.train_id,
-    //   "train_name": newTrain.train_name,
-    //   "capacity": newTrain.capacity,
-    //   "service_start": newTrain.stops[0].arrival_time;
-    //   "service_ends" : newTrain.stops[stop.size()]
-    //   "num_stations": 3
-    // }
-
-    res.status(201).json(newTrain);
+    const resTrain = {
+      "train_id": newTrain.train_id,
+      "train_name": newTrain.train_name,
+      "capacity": newTrain.capacity,
+      "service_start": newTrain.stops[0].departure_time,
+      "service_ends" : newTrain.stops.at(-1).arrival_time,
+      "num_stations": 3
+    }
+    res.status(201).json(resTrain);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
@@ -38,7 +37,8 @@ async function createTrain(req, res){
 
 
 module.exports = { createUser,
-                   createTrain
+                   createTrain,
+                   
                   };
 // async function create(req, res) {
 //   try {
