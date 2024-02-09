@@ -1,0 +1,63 @@
+###Check API Health
+GET http://localhost:5000/health
+
+###Fetch All Book
+http://localhost:5000/api/books?author=Aldous%20Huxley&sort=title&order=DESC
+
+###Fetch All Book
+GET http://localhost:5000/api/books
+
+###Fetch Book
+GET http://localhost:5000/api/books/4
+
+
+###Update
+PUT http://localhost:5000/api/books/10
+Content-Type: application/json
+
+{
+    "id": 1,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "price": 25.99
+}
+
+
+###Add Books
+POST http://localhost:5000/api/books
+Content-Type: application/json
+
+{
+    "id": 1,
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Fiction",
+    "price": 19.99
+}
+
+###
+POST http://localhost:5000/api/books
+Content-Type: application/json
+
+{
+    "id": 2,
+    "title": "Go Set a Watchman",
+    "author": "Harper Lee",
+    "genre": "Drama",
+    "price": 24.99
+}
+
+###
+POST http://localhost:5000/api/books
+Content-Type: application/json
+
+{
+    "id": 3,
+    "title": "To Kill a Mockingbird: A Graphic Novel",
+    "author": "Harper Lee",
+    "genre": "Graphic Novel",
+    "price": 14.99
+}
+
+
