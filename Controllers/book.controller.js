@@ -1,45 +1,36 @@
 const model = require("../Models/book.model");
-const {Book, 
-      User,
-      Train
-    } = model;
+const { Book, User, Train } = model;
 
-
-
-async function createUser(req, res){
-  try {
-    const newUser = await User.create(req.body);
-    res.status(201).json(newUser);
-  } catch (error) {
-        console.error(error);
-        res.status(500).send("Internal Server Error");
-  }
+async function createUser(req, res) {
+	try {
+		const newUser = await User.create(req.body);
+		res.status(201).json(newUser);
+	} catch (error) {
+		console.error(error);
+		res.status(500).send("Internal Server Error");
+	}
 }
 
-async function createTrain(req, res){
-  try {
-    const newTrain = await Train.create(req.body);
+async function createTrain(req, res) {
+	try {
+		const newTrain = await Train.create(req.body);
 
-    const resTrain = {
-      "train_id": newTrain.train_id,
-      "train_name": newTrain.train_name,
-      "capacity": newTrain.capacity,
-      "service_start": newTrain.stops[0].departure_time,
-      "service_ends" : newTrain.stops.at(-1).arrival_time,
-      "num_stations": 3
-    }
-    res.status(201).json(resTrain);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
-  }
+		const resTrain = {
+			train_id: newTrain.train_id,
+			train_name: newTrain.train_name,
+			capacity: newTrain.capacity,
+			service_start: newTrain.stops[0].departure_time,
+			service_ends: newTrain.stops.at(-1).arrival_time,
+			num_stations: 3,
+		};
+		res.status(201).json(resTrain);
+	} catch (error) {
+		console.error(error);
+		res.status(500).send("Internal Server Error");
+	}
 }
 
-
-module.exports = { createUser,
-                   createTrain,
-                   
-                  };
+module.exports = { createUser, createTrain };
 // async function create(req, res) {
 //   try {
 //     const newBook = await Book.create(req.body);
@@ -89,17 +80,17 @@ module.exports = { createUser,
 
 // async function fetchAll(req, res) {
 //   try {
-    
+
 //     const args = req.query;
 //     const searchQuery = {};
-   
+
 //     if ("title" in args) {
 //       searchQuery.title = args.title;
 //     } else if ("author" in args) {
 //       searchQuery.author = args.author;
 //     } else if ("genre" in args) {
 //       searchQuery.genre = args.genre;
-//     } 
+//     }
 
 //     const sortField = args.sort || "id";
 //     const sortOrder = args.order === 'DESC' ? -1 : 1;
@@ -113,6 +104,7 @@ module.exports = { createUser,
 
 //    //  console.log(sortField, sortOrder );
 
+//  console.log(sortField, sortOrder );
 
 //    //  console.log(searchKey, searchVal);
 
@@ -122,4 +114,3 @@ module.exports = { createUser,
 //     res.status(500).send("Internal Server Error");
 //   }
 // }
-

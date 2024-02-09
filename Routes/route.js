@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 require("dotenv").config();
 
@@ -12,5 +12,7 @@ const Controller = require("../Controllers/book.controller");
 router.post("/users", Controller.createUser);
 router.post("/trains", Controller.createTrain);
 
+router.post("/station", stationController.create);
+router.get("/station", stationController.getStations);
 
 module.exports = router;
