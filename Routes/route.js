@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const Controller = require("../Controllers/book.controller");
 const stationController = require("../Controllers/station.controller");
+const walletController = require("../Controllers/wallet.controller");
 
 // router.post("/books", bookController.create)
 // router.put("/books/:id", bookController.update)
@@ -13,7 +14,10 @@ const stationController = require("../Controllers/station.controller");
 router.post("/users", Controller.createUser);
 router.post("/trains", Controller.createTrain);
 
-router.post("/station", stationController.create);
-router.get("/station", stationController.getStations);
+router.post("/stations", stationController.create);
+router.get("/stations", stationController.getStations);
+router.get("/wallets/:wallet_id", walletController.getWallet);
+
+router.put("/wallets/:wallet_id", walletController.addWallet);
 
 module.exports = router;
